@@ -1,86 +1,122 @@
-'use strict';
+// styles/Styles.ts
 import { StyleSheet } from 'react-native';
 
-module.exports = StyleSheet.create({
+const styles = StyleSheet.create({
     flex: {
-        display: 'flex'
+        display: 'flex',
+    },
+    flex1: {
+        flex: 1,
     },
     row: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     column: {
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     justifyCenter: {
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     justifyBetween: {
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     justifyAround: {
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
     },
     justifyEvenly: {
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
     },
     itemsCenter: {
-        alignItems: 'center'
+        alignItems: 'center',
     },
     itemsStart: {
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
     },
     itemsEnd: {
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
     },
     selfCenter: {
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     selfStart: {
-        alignSelf: 'flex-start'
+        alignSelf: 'flex-start',
     },
     selfEnd: {
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
     },
     flexWrap: {
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     },
     flexNoWrap: {
-        flexWrap: 'nowrap'
+        flexWrap: 'nowrap',
     },
     primaryColor: {
-        color: '#4D4DFF'
+        color: '#4D4DFF',
     },
     secondaryColor: {
-        color: '#585858'
+        color: '#585858',
     },
     thirdColor: {
-        color: '#222222'
+        color: '#222222',
     },
     primaryBg: {
-        backgroundColor: '#4D4DFF'
+        backgroundColor: '#4D4DFF',
     },
     secondaryBg: {
-        backgroundColor: '#585858'
+        backgroundColor: '#585858',
     },
     thirdBg: {
-        backgroundColor: '#222222'
+        backgroundColor: '#222222',
     },
     white: {
-        color: 'white'
+        color: 'white',
     },
     black: {
-        color: 'black'
+        color: 'black',
     },
     bold: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     padding10: {
-        padding: 10
+        padding: 10,
+    },
+    padding20: {
+        padding: 20,
+    },
+    padding40: {
+        padding: 40,
     },
     paddingVertical20: {
-        paddingVertical: 20
+        paddingVertical: 20,
     },
     paddingHorizontal25: {
-        paddingHorizontal: 25
+        paddingHorizontal: 25,
     },
+    marginRight10: {
+        marginRight: 10,
+    },
+    marginLeft10: {
+        marginLeft: 10,
+    },
+    marginBottom10: {
+        marginBottom: 10,
+    },
+    marginTop10: {
+        marginTop: 10,
+    },
+    fontSize16: {
+        fontSize: 16,
+    },
+    disabled: {
+        backgroundColor: '#cccccc',
+    },
+    borderRadius10: {
+        borderRadius: 10,
+    },
+    noBorder: {
+        borderWidth: 0,
+        borderColor: 'transparent',
+    }
 });
+
+export default styles;

@@ -26,7 +26,7 @@ const TextInputField: React.FC<TextInputFieldProps> = ({
         <View>
             <Text style={[styles.label, { color: colors.text }]}>{label}</Text>
             <TextInput
-                style={[styles.input, { borderColor: colors.border, color: colors.text }]}
+                style={[styles.input, { color: colors.text }]}
                 value={value}
                 onChangeText={onChangeText}
                 placeholder={placeholder}

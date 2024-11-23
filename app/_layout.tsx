@@ -1,16 +1,16 @@
-import { DarkTheme, ThemeProvider } from '@react-navigation/native';
-import { Slot} from 'expo-router';
+import { Slot } from 'expo-router';
 import 'react-native-reanimated';
 
 import { AuthProvider } from '@/components/providers';
+import { View } from 'react-native';
 
 export default function RootLayout() {
 
   return (
     <AuthProvider>
-      <ThemeProvider value={DarkTheme}>
+      <View style={{ backgroundColor: 'black', flex: 1 }}>
         <Slot />
-      </ThemeProvider>
+      </View>
     </AuthProvider>
   );
 }
