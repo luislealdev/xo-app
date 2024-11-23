@@ -1,8 +1,9 @@
 import React from 'react'
+import { Text } from 'react-native'
 
 const explore = () => {
   return (
-    <div>explore</div>
+    <Text>explore</Text>
   )
 }
 

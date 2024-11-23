@@ -59,6 +59,12 @@ const styles = StyleSheet.create({
     thirdColor: {
         color: '#222222',
     },
+    transparentBg: {
+        backgroundColor: 'transparent',
+    },
+    blackBg: {
+        backgroundColor: '#000000',
+    },
     primaryBg: {
         backgroundColor: '#4D4DFF',
     },
@@ -106,6 +112,15 @@ const styles = StyleSheet.create({
     },
     fontSize16: {
         fontSize: 16,
+    },
+    fontSize20: {
+        fontSize: 20,
+    },
+    fontSize24: {
+        fontSize: 24,
+    },
+    fontSize30: {
+        fontSize: 30,
     },
     disabled: {
         backgroundColor: '#cccccc',
