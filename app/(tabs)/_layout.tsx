@@ -1,7 +1,7 @@
 import { router, Tabs } from 'expo-router';
 import React, { useEffect } from 'react';
-import { Platform, SafeAreaView, StyleSheet } from 'react-native';
-
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { useAuth } from '@/components/providers';
 import { colors } from '@/constants/Colors';
 
@@ -15,38 +15,50 @@ export default function TabLayout() {
   // }, [userToken, isLoading]);
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View style={styles.safeArea} >
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarStyle: Platform.select({
-            ios: {
-              // Use a transparent background on iOS to show the blur effect
-              position: 'absolute',
-            },
-            default: {},
-          }),
+          tabBarStyle: {
+            backgroundColor: colors.black,
+            borderTopColor: 'transparent',
+            marginTop: 10,
+          },
+          tabBarActiveTintColor: colors.primary,
+          tabBarInactiveTintColor: colors.secondary,
+          tabBarLabelStyle: {
+            fontSize: 12,
+          },
+          tabBarIconStyle: {
+            color: colors.primary,
+          },
         }}>
         <Tabs.Screen
           name="index"
           options={{
             title: 'Inicio',
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="home" color={color} size={24} />
+            ),
           }}
         />
         <Tabs.Screen
           name="explore"
           options={{
             title: 'Perfil',
+            tabBarIcon: ({ color }) => (
+              <FontAwesome name="user" color={color} size={24} />
+            ),
           }}
         />
       </Tabs>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: colors.black,
+    paddingTop: 50,
   },
 });

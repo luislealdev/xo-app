@@ -62,6 +62,9 @@ const styles = StyleSheet.create({
     transparentBg: {
         backgroundColor: 'transparent',
     },
+    whiteBg: {
+        backgroundColor: '#ffffff',
+    },
     blackBg: {
         backgroundColor: '#000000',
     },
@@ -92,8 +95,14 @@ const styles = StyleSheet.create({
     padding40: {
         padding: 40,
     },
+    paddingBottom100: {
+        paddingBottom: 100,
+    },
     paddingVertical20: {
         paddingVertical: 20,
+    },
+    paddingHorizontal40: {
+        paddingHorizontal: 40,
     },
     paddingHorizontal25: {
         paddingHorizontal: 25,
@@ -106,6 +115,12 @@ const styles = StyleSheet.create({
     },
     marginBottom10: {
         marginBottom: 10,
+    },
+    marginBottom50: {
+        marginBottom: 50,
+    },
+    marginBottom100: {
+        marginBottom: 100,
     },
     marginTop10: {
         marginTop: 10,
@@ -127,6 +142,9 @@ const styles = StyleSheet.create({
     },
     borderRadius10: {
         borderRadius: 10,
+    },
+    borderRadius100: {
+        borderRadius: 100,
     },
     noBorder: {
         borderWidth: 0,
