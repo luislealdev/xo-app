@@ -30,6 +30,7 @@ export default function HomeScreen() {
         />
       </View>
       <Text style={[styles.white, styles.marginTop10]}>Cerca de ti</Text>
+      
       {/* TODO: Add rounded cards to slice */}
     </View>
   );
