@@ -36,6 +36,7 @@ export const PartyCard = ({ title, month, day, image, location }: Props) => {
 
 const localStyles = StyleSheet.create({
     cardContainer: {
+        width: '100%',
         minHeight: 150,
         borderRadius: 10,
         overflow: 'hidden',

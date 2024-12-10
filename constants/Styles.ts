@@ -125,6 +125,12 @@ const styles = StyleSheet.create({
     marginTop10: {
         marginTop: 10,
     },
+    fontSize12: {
+        fontSize: 12,
+    },
+    fontSize14: {
+        fontSize: 14,
+    },
     fontSize16: {
         fontSize: 16,
     },
@@ -149,6 +155,9 @@ const styles = StyleSheet.create({
     noBorder: {
         borderWidth: 0,
         borderColor: 'transparent',
+    },
+    centerText: {
+        textAlign: 'center',
     }
 });
 
