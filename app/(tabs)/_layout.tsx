@@ -4,6 +4,7 @@ import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { useAuth } from '@/components/providers';
 import { colors } from '@/constants/Colors';
+import styles from '@/constants/Styles';
 
 export default function TabLayout() {
   const { userToken, isLoading } = useAuth();
@@ -55,10 +56,3 @@ export default function TabLayout() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    paddingTop: 50,
-  },
-});

@@ -107,6 +107,9 @@ const styles = StyleSheet.create({
     paddingHorizontal25: {
         paddingHorizontal: 25,
     },
+    paddingTop50: {
+        paddingTop: 50,
+    },
     marginRight10: {
         marginRight: 10,
     },
@@ -116,6 +119,9 @@ const styles = StyleSheet.create({
     marginBottom10: {
         marginBottom: 10,
     },
+    marginBottom20: {
+        marginBottom: 20,
+    },
     marginBottom50: {
         marginBottom: 50,
     },
@@ -124,6 +130,9 @@ const styles = StyleSheet.create({
     },
     marginTop10: {
         marginTop: 10,
+    },
+    marginTop50: {
+        marginTop: 50,
     },
     fontSize12: {
         fontSize: 12,
@@ -158,7 +167,34 @@ const styles = StyleSheet.create({
     },
     centerText: {
         textAlign: 'center',
-    }
+    },
+
+    safeArea: {
+        flex: 1,
+        paddingTop: 50,
+    },
+
+    label: {
+        marginBottom: 8,
+        fontSize: 16,
+    },
+    input: {
+        width: '100%',
+        borderWidth: 1,
+        borderRadius: 20,
+        backgroundColor: '#222222',
+        color: 'white',
+        paddingVertical: 20,
+        paddingHorizontal: 25,
+        // paddingRight: 30,
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+    error: {
+        marginTop: 4,
+        color: 'red',
+        fontSize: 14,
+    },
 });
 
 export default styles;

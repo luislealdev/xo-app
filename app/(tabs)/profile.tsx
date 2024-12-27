@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, ScrollView, Button } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-import { FlatList } from 'react-native';
 import { PartyCard } from '@/components/ui';
 import styles from '@/constants/Styles';
+import { Link, router } from 'expo-router';
 
 const data = [
   { id: '1', title: 'Fiesta 1', month: 'Dic', day: 14, image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg', location: 'Celaya, México' },
@@ -13,6 +13,7 @@ const data = [
 ];
 
 const ProfileView = () => {
+
   return (
     <ScrollView style={[styles.flex1, styles.blackBg]}>
       <ImageBackground
@@ -23,6 +24,15 @@ const ProfileView = () => {
           colors={['transparent', 'rgba(0,0,0,0.8)']}
           style={localStyles.gradient}
         />
+        <View style={localStyles.headerContainer}>
+          <TouchableOpacity onPress={
+            () => {
+              router.push('/event/new');
+            }
+          } style={localStyles.addButton}>
+            <Ionicons name="add-circle" size={50} color={styles.primaryColor.color} />
+          </TouchableOpacity>
+        </View>
         <View style={localStyles.statsContainer}>
           <View style={[styles.itemsCenter]}>
             <Text style={[styles.white, styles.bold, styles.fontSize20]}>34.4k</Text>
@@ -104,6 +114,14 @@ const localStyles = StyleSheet.create({
     paddingVertical: 15,
     borderBottomWidth: 2,
     borderBottomColor: 'transparent',
+  },
+  headerContainer: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+  },
+  addButton: {
+    padding: 10,
   },
 });
 

@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import styles from '@/constants/Styles';
 
 interface TextInputFieldProps {
     label?: string;
@@ -10,6 +11,8 @@ interface TextInputFieldProps {
     placeholder?: string;
     secureTextEntry?: boolean;
     error?: string;
+    multiline?: boolean
+    numberOfLines?: number
 }
 
 const TextInputField: React.FC<TextInputFieldProps> = ({
@@ -19,47 +22,27 @@ const TextInputField: React.FC<TextInputFieldProps> = ({
     placeholder,
     secureTextEntry,
     error,
+    multiline,
+    numberOfLines
 }) => {
-    const { colors } = useTheme();
 
     return (
-        <View>
-            <Text style={[styles.label, { color: colors.text }]}>{label}</Text>
+        <View style={styles.marginBottom20}>
+            <Text style={[styles.label, styles.white, styles.bold]}>{label}</Text>
             <TextInput
-                style={[styles.input, { color: colors.text }]}
+                style={[styles.input, styles.white]}
                 value={value}
                 onChangeText={onChangeText}
                 placeholder={placeholder}
                 placeholderTextColor="#585858"
                 secureTextEntry={secureTextEntry}
+                multiline={multiline}
+                numberOfLines={numberOfLines}
             />
             {error ? <Text style={styles.error}>{error}</Text> : null}
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    label: {
-        marginBottom: 8,
-        fontSize: 16,
-    },
-    input: {
-        width: '100%',
-        borderWidth: 1,
-        borderRadius: 20,
-        backgroundColor: '#222222',
-        color: 'white',
-        paddingVertical: 20,
-        paddingHorizontal: 25,
-        // paddingRight: 30,
-        fontWeight: 'bold',
-        fontSize: 16,
-    },
-    error: {
-        marginTop: 4,
-        color: 'red',
-        fontSize: 14,
-    },
-});
 
 export default TextInputField;
