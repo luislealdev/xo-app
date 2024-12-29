@@ -6,6 +6,7 @@ import styles from '@/constants/Styles';
 import Button from '@/components/ui/Button';
 
 import * as ImagePicker from 'expo-image-picker';
+import PinterestGrid from '../../../components/ui/PinterestGrid';
 
 
 const EventView = () => {
@@ -114,6 +115,17 @@ const EventView = () => {
                     </Text>
                 </View>
             )}
+
+            {/* Pinterest grid for pictures */}
+            <PinterestGrid images={
+                [
+                    'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg',
+                    'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg',
+                    'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg',
+                    'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg',
+                    'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg',
+                    'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg',
+                ]} />
         </ScrollView>
     );
 };
