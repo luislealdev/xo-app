@@ -1,263 +1,156 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Switch, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import TextInputField from '@/components/ui/TextInputField';
-import Button from '@/components/ui/Button';
+import React, { useState } from 'react';
+import { View, Text, ImageBackground, StyleSheet, ScrollView, TextInput, Image } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import styles from '@/constants/Styles';
-import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import SwitchInput from '@/components/ui/SwitchInput';
+import Button from '@/components/ui/Button';
+
 import * as ImagePicker from 'expo-image-picker';
-// import RNPickerSelect from 'react-native-picker-select';
-import DateTimePicker from '@react-native-community/datetimepicker';
 
-const EventPage = () => {
-  const [eventName, setEventName] = useState('');
-  const [description, setDescription] = useState('');
-  const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState('');
-  const [location, setLocation] = useState('');
-  const [numberOfPeople, setNumberOfPeople] = useState('');
-  const [theme, setTheme] = useState('');
-  const [ticketCost, setTicketCost] = useState('');
-  const [coverPhoto, setCoverPhoto] = useState('');
-  const [services, setServices] = useState({
-    security: false,
-    medicalTeam: false,
-    pool: false,
-    alcoholSale: false,
-    eCigaretteSale: false,
-    food: false,
-  });
-  const [isEventVisible, setIsEventVisible] = useState(true);
-  const [allowUserPhotos, setAllowUserPhotos] = useState(true);
-  const [contactInfo, setContactInfo] = useState('');
 
-  interface Services {
-    security: boolean;
-    medicalTeam: boolean;
-    pool: boolean;
-    alcoholSale: boolean;
-    eCigaretteSale: boolean;
-    food: boolean;
-  }
+const EventView = () => {
+    const [isRegistered, setIsRegistered] = useState(false);
+    const [eventStarted, setEventStarted] = useState(false);
 
-  const handleServiceChange = (service: keyof Services) => {
-    setServices((prevServices: Services) => ({
-      ...prevServices,
-      [service]: !prevServices[service],
-    }));
-  };
+    const [code, setCode] = useState('');
 
-  const handleCreateEvent = () => {
-    // Lógica para crear el evento
-  };
-
-  useEffect(() => {
-    const requestPermissions = async () => {
-      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (status !== 'granted') {
-        alert('Se requieren permisos para acceder a la biblioteca de imágenes.');
-      }
+    const handleRegister = () => {
+        setIsRegistered(true);
     };
 
-    requestPermissions();
-  }, []);
+    const handleAddMemory = async () => {
+        let result = await ImagePicker.launchCameraAsync({
+            allowsEditing: true,
+            quality: 0.5,
+        });
 
-  const handleFilePick = async () => {
-    try {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        allowsEditing: true,
-        quality: 0.5,
-      });
-
-      if (!result.canceled) {
-        setCoverPhoto(result.assets[0].uri);
-      }
-
-      // if (!result.canceled) {
-      //     await upload(cld, {
-      //         file: result.assets[0].uri, callback: (error: any, response: any) => {
-      //             setFormData({ ...formData, [fileType]: response.secure_url });
-      //         }
-      //     });
-      // } else {
-      //     alert('No seleccionaste ninguna imagen.');
-      // }
-    } catch (error) {
-      console.error('Error al seleccionar la imagen:', error);
-    }
-  };
-
-  return (
-    <ScrollView style={[styles.flex1, styles.blackBg, styles.padding20, styles.safeArea]}>
-      <View style={[styles.flex, styles.row, styles.itemsCenter, styles.marginBottom10]}>
-        <Ionicons name='chevron-back' style={styles.white} size={30} onPress={() => {
-          router.back();
-        }} />
-        <Text style={[styles.white, styles.fontSize24, styles.bold]}>Crear Evento</Text>
-      </View>
-      <Text style={[styles.secondaryColor, styles.fontSize16]}>Llena el formulario para continuar</Text>
-      <TextInputField
-        label="Nombre del Evento"
-        value={eventName}
-        onChangeText={setEventName}
-        placeholder="Ej: Neon Party 2025"
-      />
-      <TextInputField
-        label="Descripción"
-        value={description}
-        onChangeText={setDescription}
-        placeholder="Describe tu evento..."
-        numberOfLines={4}
-        multiline
-      />
-
-      <Text style={[styles.fontSize16, styles.bold, styles.white, styles.marginBottom10]}>Fecha y hora</Text>
-
-      <View style={[styles.row, styles.flex, styles.justifyBetween]}>
-        {/* Get date */}
-        <DateTimePicker
-          accentColor='#4D4DFF'
-          textColor='#4D4DFF'
-          style={[styles.borderRadius10]}
-          value={date}
-          onChange={(event, selectedDate) => {
-            const currentDate = selectedDate || date;
-            setDate(currentDate);
-          }}
-        />
-
-        {/* Get time */}
-        <DateTimePicker
-
-          accentColor='#4D4DFF'
-          textColor='#4D4DFF'
-          style={[styles.borderRadius10, styles.marginBottom20]}
-          value={date}
-          mode='time'
-          onChange={(event, selectedDate) => {
-            const currentDate = selectedDate || date;
-            setDate(currentDate);
-          }} />
-      </View>
-      <TextInputField
-        label="Ubicación"
-        value={location}
-        onChangeText={setLocation}
-        placeholder="Dirección del evento"
-      />
-      <TextInputField
-        label="Número de Personas"
-        value={numberOfPeople}
-        onChangeText={setNumberOfPeople}
-        placeholder="Max. 1000"
-      />
-      <TextInputField
-        label="Temática (Código de Vestimenta)"
-        value={theme}
-        onChangeText={setTheme}
-        placeholder="Ingresa la temática del evento"
-      />
-      <TextInputField
-        label="Costo del Boleto"
-        value={ticketCost}
-        onChangeText={setTicketCost}
-        placeholder="Ingresa el costo del boleto"
-      />
-
-      <View style={[styles.justifyCenter]}>
-        <TouchableOpacity onPress={() => handleFilePick()} style={[styles.justifyCenter, styles.itemsCenter, styles.marginTop10, styles.thirdBg, styles.padding10, styles.borderRadius10]}>
-          <Ionicons name="cloud-upload-outline" size={24} color={styles.primaryColor.color} />
-          <Text style={[styles.primaryColor, styles.bold, styles.marginLeft10]}>Seleccionar Imagen</Text>
-        </TouchableOpacity>
-        {
-          coverPhoto && <Image source={{ uri: coverPhoto }} style={{ width: '100%', height: 200, marginTop: 50 }} />
+        if (!result.canceled) {
+            // Lógica para manejar la imagen tomada
         }
-      </View>
+    };
 
-      <Text style={[styles.white, styles.fontSize16, styles.bold, styles.marginTop50]}>Servicios Disponibles</Text>
-      <View style={localStyles.checkboxContainer}>
-        <SwitchInput
-          label="Seguridad"
-          value={services.security}
-          onValueChange={() => handleServiceChange('security')}
-        />
-        <SwitchInput
-          label="Equipo Médico"
-          value={services.medicalTeam}
-          onValueChange={() => handleServiceChange('medicalTeam')}
-        />
-        <SwitchInput
-          label="Alberca"
-          value={services.pool}
-          onValueChange={() => handleServiceChange('pool')}
-        />
-        <SwitchInput
-          label="Venta de Alcohol"
-          value={services.alcoholSale}
-          onValueChange={() => handleServiceChange('alcoholSale')}
-        />
-        <SwitchInput
-          label="Venta de Cigarros Electrónicos"
-          value={services.eCigaretteSale}
-          onValueChange={() => handleServiceChange('eCigaretteSale')}
-        />
-        <SwitchInput
-          label="Comida"
-          value={services.food}
-          onValueChange={() => handleServiceChange('food')}
-        />
+    return (
+        <ScrollView style={[styles.flex1, styles.blackBg]}>
+            <ImageBackground
+                source={{ uri: 'https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.duendesproducciones.com/wp-content/uploads/2022/04/uv-party-2.jpg' }}
+                // style={localStyles.imageBackground}
+                style={{ width: '100%', height: 500, display: 'flex', justifyContent: 'center', alignSelf: 'center', alignItems: 'center' }}
+            >
+                <LinearGradient
+                    colors={['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.7)']}
+                    style={localStyles.gradient}
+                />
+                <View>
+                    <Text style={[styles.white, styles.bold, { fontSize: 60 }]}>NEON PARTY</Text>
+                    <View style={{ marginTop: 40 }}>
+                        <Text style={[styles.white, styles.centerText, styles.fontSize24, styles.bold]}>340</Text>
+                        <Text style={[styles.white, styles.centerText, styles.fontSize20, styles.bold]}>asistentes</Text>
+                    </View>
+                </View>
+                {/* <View style={{}}>
+                    <View style={localStyles.ribbon}>
+                        <Text style={[styles.white, styles.bold]}>14 Dic</Text>
+                    </View>
+                </View> */}
+            </ImageBackground>
 
-        <Text style={[styles.white, styles.fontSize16, styles.bold, styles.marginTop50]}>Configuración de Evento</Text>
+            <View style={localStyles.infoContainer}>
+                <View style={[styles.flex, styles.justifyBetween, styles.row]}>
+                    <View style={localStyles.infoRow}>
+                        <Ionicons name="calendar" size={24} color={styles.primaryColor.color} />
+                        <Text style={[styles.white, styles.marginLeft10, styles.fontSize16]}>14 Dic 2025</Text>
+                    </View>
+                    <View style={localStyles.infoRow}>
+                        <Ionicons name="time" size={24} color={styles.primaryColor.color} />
+                        <Text style={[styles.white, styles.marginLeft10, styles.fontSize16]}>8:00 PM</Text>
+                    </View>
+                </View>
+                <Text style={[styles.white, styles.marginTop10, styles.fontSize16, styles.marginBottom20, styles.justifyText]}>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut asperiores accusamus hic consectetur, ab reprehenderit. Temporibus voluptatem, nesciunt excepturi sit vero, possimus a maxime laboriosam sapiente, perspiciatis ipsam cupiditate sunt!
+                </Text>
+                <View style={localStyles.infoRow}>
+                    <Ionicons name="location" size={24} color={styles.primaryColor.color} />
+                    <Text style={[styles.white, styles.marginLeft10, styles.fontSize16]}>Casa Rotaria</Text>
+                </View>
+                <View style={localStyles.infoRow}>
+                    <Ionicons name="shirt" size={24} color={styles.primaryColor.color} />
+                    <Text style={[styles.white, styles.marginLeft10, styles.fontSize16]}>Neon colors</Text>
+                </View>
+                <View style={localStyles.servicesContainer}>
+                    <FontAwesome5 name="shield-alt" size={24} color={styles.primaryColor.color} />
+                    <FontAwesome5 name="beer" size={24} color={styles.primaryColor.color} />
+                    <FontAwesome5 name="smoking" size={24} color={styles.primaryColor.color} />
+                    <FontAwesome5 name="ambulance" size={24} color={styles.primaryColor.color} />
+                    <FontAwesome5 name="utensils" size={24} color={styles.primaryColor.color} />
+                    <FontAwesome5 name="swimmer" size={24} color={styles.primaryColor.color} />
+                </View>
+            </View>
 
+            {!isRegistered && !eventStarted && (
+                <View style={localStyles.registrationContainer}>
+                    <TextInput
+                        style={[styles.input, styles.white, styles.marginBottom10]}
+                        placeholder="Ingresa tu código"
+                        placeholderTextColor="#888"
+                        value={code}
+                        onChangeText={setCode}
+                    />
+                    <Button title="Registrarse" onPress={handleRegister} />
+                </View>
+            )}
 
-        <SwitchInput
-          label="Evento Visible"
-          value={isEventVisible}
-          onValueChange={() => setIsEventVisible(!isEventVisible)}
-        />
-        <SwitchInput
-          label="Permitir Fotos de Usuarios"
-          value={allowUserPhotos}
-          onValueChange={() => setAllowUserPhotos(!allowUserPhotos)}
-        />
+            {isRegistered && !eventStarted && (
+                <View style={localStyles.qrContainer}>
+                    <Image source={{ uri: 'https://luisrrleal.com/_next/image?url=https%3A%2F%2Fquickchart.io%2Fqr%3Ftext%3Dhttps%3A%2F%2Fluisrrleal.com%2F%26width%3D300%26height%3D300%26format%3Dpng&w=640&q=75' }} style={localStyles.qrCode} />
+                    <Text style={[styles.white, styles.marginBottom10, styles.marginTop50]}>Ya estás registrado. Presenta este código QR en la entrada.</Text>
+                </View>
+            )}
 
-
-      </View>
-      <View style={styles.marginTop50}>
-        <TextInputField
-          label="Información de Contacto"
-          value={contactInfo}
-          onChangeText={setContactInfo}
-          placeholder="Ingresa la información de contacto, ¿cómo pueden comprar boletos?,
-           Ej: WhatsApp: 1234567890, preventas disponibles en zona centro."
-          multiline
-          numberOfLines={4}
-        />
-      </View>
-      <View style={styles.marginTop10}>
-        <Button title="Crear Evento" onPress={handleCreateEvent} />
-      </View>
-    </ScrollView>
-  );
+            {eventStarted && (
+                <View style={localStyles.memoryContainer}>
+                    <Button title="Agregar Memoria" onPress={handleAddMemory} />
+                    <Text style={[styles.white, styles.marginBottom10, styles.marginTop50]}>
+                        Las memorias son imágenes que se compartirán con todos los asistentes de la fiesta 24 horas después de haberse terminado.
+                    </Text>
+                </View>
+            )}
+        </ScrollView>
+    );
 };
 
 const localStyles = StyleSheet.create({
-  checkboxContainer: {
-    marginTop: 10,
-  },
-  checkboxRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: 5,
-  },
-  switchContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
+    gradient: {
+        ...StyleSheet.absoluteFillObject,
+        height: '100%',
+    },
+    infoContainer: {
+        padding: 20,
+    },
+    infoRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    servicesContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 20,
+    },
+    registrationContainer: {
+        marginBottom: 50,
+        padding: 20,
+    },
+    qrContainer: {
+        padding: 20,
+        alignItems: 'center',
+    },
+    qrCode: {
+        width: 200,
+        height: 200,
+    },
+    memoryContainer: {
+        padding: 20,
+    },
 });
 
-export default EventPage;
+export default EventView;

@@ -1,5 +1,6 @@
 // styles/Styles.ts
 import { StyleSheet } from 'react-native';
+import { red } from 'react-native-reanimated/lib/typescript/Colors';
 
 const styles = StyleSheet.create({
     flex: {
@@ -59,6 +60,7 @@ const styles = StyleSheet.create({
     thirdColor: {
         color: '#222222',
     },
+
     transparentBg: {
         backgroundColor: 'transparent',
     },
@@ -79,6 +81,9 @@ const styles = StyleSheet.create({
     },
     white: {
         color: 'white',
+    },
+    red: {
+        color: 'red',
     },
     black: {
         color: 'black',
@@ -168,7 +173,9 @@ const styles = StyleSheet.create({
     centerText: {
         textAlign: 'center',
     },
-
+    justifyText: {
+        textAlign: 'justify',
+    },
     safeArea: {
         flex: 1,
         paddingTop: 50,
