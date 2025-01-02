@@ -3390,6 +3390,13 @@ expo-blur@~14.0.1:
   resolved "https://registry.npmjs.org/expo-blur/-/expo-blur-14.0.1.tgz"
   integrity sha512-3Q6jFBLbY8n2vwk28ycUC+eIlVhnlqwkXUKk/Lfaj+SGV3AZMQyrixe7OYwJdUfwqETBrnYYMB6uNrJzOSbG+g==
 
+expo-camera@^16.0.10:
+  version "16.0.10"
+  resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-16.0.10.tgz#d3ee17f18984d33425046c83a78e06a533654ddb"
+  integrity sha512-CKvC9dhBuR7VkuwXsBya+Ok2h97z9t7EefkP5sZNdPXZYab8K/zxcisGJZG6/mjCVqzHIftvCb3GxJtuRrDIBQ==
+  dependencies:
+    invariant "^2.2.4"
+
 expo-constants@~17.0.0, expo-constants@~17.0.3:
   version "17.0.3"
   resolved "https://registry.npmjs.org/expo-constants/-/expo-constants-17.0.3.tgz"
@@ -3449,7 +3456,7 @@ expo-linking@~7.0.3:
 
 expo-media-library@^17.0.4:
   version "17.0.4"
-  resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-17.0.4.tgz#428db62aa21777ab3cc2859cd8c7c147666dc531"
+  resolved "https://registry.npmjs.org/expo-media-library/-/expo-media-library-17.0.4.tgz"
   integrity sha512-5Fbv3dTlswO6ZcSYDF7zrCzsGly14rA0uKo+wyn3H4gEVgmLOZEzvAkLT4ELFq4RfT+zEuYCKPG1Sb1Q41e5kg==
 
 expo-modules-autolinking@2.0.2:
