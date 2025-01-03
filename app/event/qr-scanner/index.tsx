@@ -31,8 +31,8 @@ const QRScanner = () => {
 
     return (
         <View style={styles.flex1}>
-            <CameraView barcodeScannerSettings={{
-                barcodeTypes: ["qr"],
+            <CameraView facing='back' onBarcodeScanned={({ data }) => {
+                console.log(data);
             }} />
         </View>
     );
