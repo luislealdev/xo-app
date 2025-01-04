@@ -39,7 +39,12 @@ const EventView = () => {
           colors={['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.7)']}
           style={localStyles.gradient}
         />
-        <View>
+        <TouchableOpacity onPress={() => router.back()} style={localStyles.backButton}>
+          <Ionicons name="arrow-back" size={30} color="white" />
+        </TouchableOpacity>
+        <View style={{ position: 'relative' }}>
+          {/* Back button */}
+
           <Text style={[styles.white, styles.bold, { fontSize: 60 }]}>NEON PARTY</Text>
           <View style={{ marginTop: 40 }}>
             <Text style={[styles.white, styles.centerText, styles.fontSize24, styles.bold]}>340</Text>
@@ -183,6 +188,14 @@ const localStyles = StyleSheet.create({
     borderRadius: 50,
     padding: 15,
     elevation: 5,
+  },
+  backButton: {
+    color: 'white',
+    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    position: 'absolute',
+    top: 50,
+    left: 30,
+    zIndex: 1,
   },
 });
 

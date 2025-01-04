@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking } from 'react-native';
 import { Camera, CameraView } from 'expo-camera';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import styles from '@/constants/Styles';
 
 const QRScanner = () => {
@@ -33,6 +33,7 @@ const QRScanner = () => {
         <View style={styles.flex1}>
             <CameraView facing='back' onBarcodeScanned={({ data }) => {
                 console.log(data);
+                Linking.openURL(data);
             }} />
         </View>
     );
